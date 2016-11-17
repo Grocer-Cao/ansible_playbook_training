@@ -1,0 +1,21 @@
+---
+- hosts: local
+  tasks:
+      #vars:
+      #  - file_path1: cph.txt
+      #  - file_path2: abc.txt
+      - name: Touch
+        command: touch /tmp/{{file_path1}}
+        vars:
+          - file_path1: cph.txt
+      - name: Date
+        shell: date > /tmp/{{file_path2}}
+        vars:
+          - file_path2: abc.txt
+      - name: Try Another Way
+        command: touch /tmp/{{item}}
+        with_items:
+          - oscar.txt
+          - kevin.txt
+  roles:
+  - common

@@ -1,0 +1,10 @@
+- name: Roles tasks test
+  shell: uname >> /tmp/{{fp1}}
+
+- name: Templates
+  template: src=vim.rc.j2 dest=/tmp/vim.rc
+
+- name: Install tree
+  yum: name={{item}} state=present
+  with_items:
+  - tree
